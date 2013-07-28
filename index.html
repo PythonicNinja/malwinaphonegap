@@ -4,19 +4,25 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css"
+          type="text/css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
+    <script type='text/javascript'
+            src='http://maps.google.com/maps/api/js?sensor=true'></script>
+    <script type="text/javascript" src='js/jquery.ui.map.full.min.js'></script>
     <script type="text/javascript" src="cordova.js"></script>
     <link rel="stylesheet" href="css/app.css" type="text/css">
+
 </head>
 <body data-theme="c">
 
 <!-- This page will show first -->
-<div data-role="page" id="index"  data-theme="c">
+<div data-role="page" id="index" data-theme="c">
 
-    <div data-role="header" data-position="inline" id="indexheader" data-theme="c">
+    <div data-role="header" data-position="inline" id="indexheader"
+         data-theme="c">
         <h1>Menu</h1>
     </div>
     <!-- /header -->
@@ -26,36 +32,42 @@
             <li>
                 <a href="#page1" data-transition="slidefade">
                     <h3>Poznanie</h3>
+
                     <p>Malwina</p>
                 </a>
             </li>
             <li>
                 <a href="#page2" data-transition="slidefade">
                     <h3>Wyjazd</h3>
+
                     <p>Do Les 2 Alpes</p>
                 </a>
             </li>
             <li>
                 <a href="#page3" data-transition="slidefade">
                     <h3>Spotkania</h3>
+
                     <p>wiele romantycznych spotkań</p>
                 </a>
             </li>
             <li>
                 <a href="#page4" data-transition="slidefade">
                     <h3>Wyjazd do Krakowa</h3>
+
                     <p>z Domańskim...</p>
                 </a>
             </li>
             <li>
                 <a href="#page5" data-transition="slidefade">
                     <h3>Inne</h3>
+
                     <p>znów z piękną w cudowne miejsca</p>
                 </a>
             </li>
             <li>
                 <a href="#page6" data-transition="slidefade">
                     <h3>Ulubione</h3>
+
                     <p>prezenty Malwiny</p>
                 </a>
             </li>
@@ -71,25 +83,41 @@
 
 <!-- 1 PAGE -->
 <div data-role="page" id="page1" data-theme="c">
-    <div data-role="header" data-position="inline" id="page1header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page1header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
     <div data-role="content">
         <h3>Zakopane 2010</h3>
         <img src="css/images/malwina.jpg" alt=""/>
+
+        <h3>Miejsce</h3>
+
+        <div id="mapZakopane" class='map'></div>
     </div>
     <!-- /content -->
-
+    <script type="text/javascript">
+        $('#mapZakopane').gmap({'center': '49.298113,19.949691', 'zoom': 13, 'disableDefaultUI': true, 'callback': function () {
+            var self = this;
+            self.addMarker({'position': this.get('map').getCenter() }).click(function () {
+                self.openInfoWindow({ 'content': 'Zakopane!' }, this);
+            });
+        }});
+    </script>
     <div data-role="footer" data-position="fixed" data-theme="c">
         <h3>Aplikacja dla Malwiny :*</h3>
     </div>
+
 </div>
 <!-- 2 PAGE -->
 <div data-role="page" id="page2" data-theme="c">
-    <div data-role="header" data-position="inline" id="page2header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page2header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
@@ -99,17 +127,29 @@
         <img src="css/images/les2alpes2012_2.JPG" alt=""/>
         <img src="css/images/les2alpes2012_3.JPG" alt=""/>
         <img src="css/images/les2alpes2012_4.JPG" alt=""/>
+        <h3>Miejsce</h3>
+
+        <div id="mapLes2Alpes" class='map'></div>
     </div>
     <!-- /content -->
-
+    <script type="text/javascript">
+        $('#mapLes2Alpes').gmap({'center': '45.014506,6.124169', 'zoom': 15, 'disableDefaultUI': true, 'callback': function () {
+            var self = this;
+            self.addMarker({'position': this.get('map').getCenter() }).click(function () {
+                self.openInfoWindow({ 'content': 'Les2Alpes Pierwsze!' }, this);
+            });
+        }});
+    </script>
     <div data-role="footer" data-position="fixed" data-theme="c">
         <h3>Aplikacja dla Malwiny :*</h3>
     </div>
 </div>
 <!-- 3 PAGE -->
 <div data-role="page" id="page3" data-theme="c">
-    <div data-role="header" data-position="inline" id="page3header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page3header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
@@ -128,8 +168,10 @@
 </div>
 <!-- 4 PAGE -->
 <div data-role="page" id="page4">
-    <div data-role="header" data-position="inline" id="page4header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page4header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
@@ -140,17 +182,29 @@
         <img src="css/images/piekary_3.JPG" alt=""/>
         <img src="css/images/piekary_4.JPG" alt=""/>
         <img src="css/images/piekary_5.JPG" alt=""/>
+        <h3>Miejsce</h3>
+
+        <div id="mapPiekary" class='map'></div>
     </div>
     <!-- /content -->
-
+    <script type="text/javascript">
+        $('#mapPiekary').gmap({'center': '50.02383,19.795987', 'zoom': 10, 'disableDefaultUI': true, 'callback': function () {
+            var self = this;
+            self.addMarker({'position': this.get('map').getCenter() }).click(function () {
+                self.openInfoWindow({ 'content': 'Les2Alpes Pierwsze!' }, this);
+            });
+        }});
+    </script>
     <div data-role="footer" data-position="fixed" data-theme="c">
         <h3>Aplikacja dla Malwiny :*</h3>
     </div>
 </div>
 <!-- 5 PAGE -->
 <div data-role="page" id="page5">
-    <div data-role="header" data-position="inline" id="page5header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page5header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
@@ -173,8 +227,10 @@
 </div>
 <!-- 6 PAGE -->
 <div data-role="page" id="page6">
-    <div data-role="header" data-position="inline" id="page6header" data-theme="c">
-        <h1><a href="#index" data-role="button" data-icon="back" data-transition="slidefade">Cofnij</a></h1>
+    <div data-role="header" data-position="inline" id="page6header"
+         data-theme="c">
+        <h1><a href="#index" data-role="button" data-icon="back"
+               data-transition="slidefade">Cofnij</a></h1>
     </div>
     <!-- /header -->
 
